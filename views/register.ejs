@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body style=" display: flex; align-items: center; justify-content: center;height: 90vh; background-color: #d4d3d3;">
+    <div style="text-align: center;border-radius: 8px;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);background-color: #ffffff;">
+        <h3 style="text-align: center;">SIGN UP!</h3>
+        <form action="/register" method="POST">
+            <div style="margin: 10px;">
+            <label for="username">username</label>
+            <input type="text" id="username" placeholder="Enter your username" name="username">
+            </div>
+            <div style="margin: 10px;">
+            <label for="password">password</label>
+            <input type="text" id="password" placeholder="Enter your password" name="password">
+            </div>
+            <div style="margin: 10px;">
+                <button style="background-color: rgb(33, 126, 95); color: white;">SignUP!</button>
+            </div>
+        </form>
+        <div style="margin: 10px;">
+        <a href="/login" style="color: rgb(56, 26, 208);text-decoration: none;">Alerady a User?Sign In!</a>
+    </div>
+    </div>
+</body>
+</html>

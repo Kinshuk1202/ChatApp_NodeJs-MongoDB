@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chats</title>
+</head>
+<header style=" display: flex;justify-content: space-between;align-items: center; background-color: #d4d3d3;">
+    <h1 style="margin: 10px;">
+        <%=user.username%>
+    </h1>
+    <div style=" display: flex;align-items: flex-end;">
+        <form action="/add" method="POST">
+            <input type="text" name="frnd" id="search" placeholder="Find a user">
+            <button style="margin: 10px; background-color: aquamarine; color: black; padding: 4px;">Find!</button>
+        </form>
+    </div>
+</header>
+<form action="/logout" method="GET" style=" background-color: #d4d3d3;">
+    <button style="margin: 10px; padding: 4px;background-color: aquamarine; color: black;">LogOut</button>
+</form>
+<hr>
+<body>
+    <ul>
+        </div>
+        <h2>All Chats</h2>
+        <% for(let friend of user.friends) { %>
+            <li>
+               <a href="/chat/<%=friend._id%>" style="text-decoration: none; color: black;font-size: larger;" ><%= friend.username %></a>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Background color for the entire page */
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        .message-container {
+            display: flex;
+            justify-content: start;
+            margin: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 8px;
+            word-wrap: break-word;
+            justify-content: flex-end;
+            background-color: #fff; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        .user-message {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); 
+        }
+
+        textarea {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+            outline: none;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4caf50; 
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<header style=" display: flex;justify-content: space-between;align-items: center; background-color: #d4d3d3;">
+    <h1 style="margin: 10px;">
+        <%=user2.username%>
+    </h1>
+    <div style=" display: flex;align-items: flex-end;">
+        <form action="/allchats" method="GET">
+            <button style="margin: 10px; background-color: aquamarine; color: black; padding: 4px;">Go back to all chats</button>
+        </form>
+    </div>
+</header>
+<body>
+    <div class="chat-container">
+        <div class="messages">
+            <% chat.messages.forEach(message => { %>
+                <div class="message-container <%= message.user_id._id.toString() === user1._id.toString() ? 'user-message' : '' %>">
+                    <div class="message">
+                        <%= message.msg %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <footer>
+        <form action="/newMsg/<%=user2._id%>" method="POST" style="display: flex; width: 100%;">
+            <textarea placeholder="Type your message..." name="msg" id="msg"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </footer>
+</body>
+
+</html>
